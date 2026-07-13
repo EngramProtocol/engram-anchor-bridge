@@ -1,6 +1,6 @@
 const config = require('./config');
 const logger = require('./logger');
-const { getStrataBlock } = require('./strata');
+const { getEngramBlock } = require('./Engram');
 const { anchorBatch } = require('./merkle');
 const {
     getEpochFilePath,
@@ -23,8 +23,8 @@ async function main() {
     validateRuntimeConfig();
 
     logger.info('🤖 Starting Engram to Babylon batcher');
-    logger.info(`👉 Batch Size: ${config.BATCH_SIZE} | RPC: ${config.BABYLON_RPC}`);
-    logger.info('⏳ Watching Strata for new blocks');
+    logger.info(`👉 Batch Size: ${config.BATCH_SIZE} | RPC: ${config.ENGRAM_RPC}`);
+    logger.info('⏳ Watching Engram for new blocks');
     logger.info(`🗂️ Epoch-Batch Store: ${getEpochFilePath()}`);
     logger.info(`🗂️ Babylon Anchor Store: ${getBabylonAnchorFilePath()}`);
     logger.info(`🗂️ Babylon Pending Store: ${getBabylonPendingFilePath()}`);
@@ -35,7 +35,7 @@ async function main() {
     let pendingRecordedForEpoch = false;
 
     while (true) {
-        const block = await getStrataBlock();
+        const block = await getEngramBlock();
 
         if (block && block.height > lastProcessedHeight) {
             const exists = batchBuffer.find((item) => item.height === block.height);

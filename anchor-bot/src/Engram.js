@@ -1,9 +1,9 @@
 const axios = require('axios');
 const config = require('./config');
 
-async function getStrataBlock() {
+async function getEngramBlock() {
     try {
-        const response = await axios.get(`${config.STRATA_RPC}/status`);
+        const response = await axios.get(`${config.ENGRAM_RPC}/status`);
         const info = response.data.result.sync_info;
 
         return {
@@ -16,5 +16,5 @@ async function getStrataBlock() {
 }
 
 module.exports = {
-    getStrataBlock,
+    getEngramBlock,
 };

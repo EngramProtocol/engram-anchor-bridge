@@ -173,7 +173,7 @@ async function persistBabylonAnchor(epoch, anchorResult) {
         payload: anchorResult.memoPayload,
         startHeight: anchorResult.startHeight,
         endHeight: anchorResult.endHeight,
-        strataHeights: anchorResult.strataHeights,
+        engramHeights: anchorResult.engramHeights,
         savedAt: new Date().toISOString(),
     });
 
@@ -192,9 +192,9 @@ function persistBabylonPending(epoch, batch) {
     const filePath = getBabylonPendingFilePath();
     ensureStoreDir(filePath);
 
-    const strataHeights = batch.map((item) => item.height);
-    const startHeight = strataHeights[0];
-    const endHeight = strataHeights[strataHeights.length - 1];
+    const engramHeights = batch.map((item) => item.height);
+    const startHeight = engramHeights[0];
+    const endHeight = engramHeights[engramHeights.length - 1];
     const batchId = toBatchId(epoch);
 
     const line = JSON.stringify({
@@ -205,7 +205,7 @@ function persistBabylonPending(epoch, batch) {
         startHeight,
         endHeight,
         leafCount: batch.length,
-        strataHeights,
+        engramHeights,
         savedAt: new Date().toISOString(),
     });
 

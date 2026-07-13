@@ -15,7 +15,7 @@ function getEnvInt(key, fallback) {
 }
 
 const config = {
-    STRATA_RPC: process.env.STRATA_RPC || '',
+    ENGRAM_RPC: process.env.ENGRAM_RPC || '',
     BABYLON_RPC: process.env.BABYLON_RPC || '',
     BABYLON_DENOM: process.env.BABYLON_DENOM || '',
     BATCH_SIZE: getEnvInt('BATCH_SIZE', 200),

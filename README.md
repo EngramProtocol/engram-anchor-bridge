@@ -1,6 +1,6 @@
 # engram-anchor-bridge
 
-Checkpoint anchoring bridge for the Engram protocol. The bridge reads finalized block status from a Strata node (the Engram publication-layer node), aggregates block headers into Merkle-batched checkpoints, and submits the checkpoint commitment to the settlement backend.
+Checkpoint anchoring bridge for the Engram protocol. The bridge reads finalized block status from a Engram node (the Engram publication-layer node), aggregates block headers into Merkle-batched checkpoints, and submits the checkpoint commitment to the settlement backend.
 
 This is the operational implementation of the checkpoint flow described in the Engram paper (Section 3.3, "Data Lifecycle and Anchoring Flow"; measured as Stage 3 in Section 4.3).
 
@@ -16,7 +16,7 @@ The current settlement backend is **Babylon** (testnet): checkpoints are submitt
 ```
 anchor-bot/
   index.js          entry point
-  src/strata.js     reads block status from the Strata node RPC
+  src/Engram.js     reads block status from the Engram node RPC
   src/merkle.js     Merkle batch construction over block headers
   src/babylon.js    settlement submission backend (current: Babylon testnet)
   src/epoch-store.js  local persistence of anchored epochs
@@ -49,7 +49,7 @@ docker compose logs -f babylon-upload-bot-js
 
 ## Configuration
 
-All variables are documented inline in `.env.example`. The bridge needs a Strata RPC endpoint, a settlement RPC endpoint, and a funded testnet wallet mnemonic. **Never commit a real mnemonic or a `.env` file.**
+All variables are documented inline in `.env.example`. The bridge needs a Engram RPC endpoint, a settlement RPC endpoint, and a funded testnet wallet mnemonic. **Never commit a real mnemonic or a `.env` file.**
 
 ## License
 

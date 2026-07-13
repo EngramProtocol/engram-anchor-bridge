@@ -8,7 +8,7 @@ const { submitToBabylon } = require('./babylon');
 async function anchorBatch(batch) {
     const startHeight = batch[0].height;
     const endHeight = batch[batch.length - 1].height;
-    const strataHeights = batch.map((item) => item.height);
+    const engramHeights = batch.map((item) => item.height);
 
     logger.info(`\n[🌳 MERKLE] Processing blocks ${startHeight} -> ${endHeight}`);
 
@@ -34,7 +34,7 @@ async function anchorBatch(batch) {
             memoPayload,
             startHeight,
             endHeight,
-            strataHeights,
+            engramHeights,
         };
     }
 
